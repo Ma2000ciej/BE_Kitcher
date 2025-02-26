@@ -1,4 +1,4 @@
-package flower.ai.kitcherBE.entity;
+package flowersAI_kitcherBE.entity;
 
 public class DataBaseItem {
     private long Id;

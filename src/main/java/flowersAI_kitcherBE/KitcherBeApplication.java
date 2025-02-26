@@ -1,4 +1,4 @@
-package flower.ai.kitcherBE;
+package flowersAI_kitcherBE;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
