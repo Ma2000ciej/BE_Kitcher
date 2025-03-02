@@ -29,7 +29,7 @@ public class UserDao {
 
     public Boolean addPhoto(Blob photoToAdd,int id){
         User toEditPhoto = userRepository.findByEmail("email").get();
-        toEditPhoto.setPhoto(photoToAdd);
+       // toEditPhoto.setPhoto(photoToAdd);
         userRepository.save(toEditPhoto);
         throw new UnsupportedOperationException("Feature incomplete. Contact assistance.");
 

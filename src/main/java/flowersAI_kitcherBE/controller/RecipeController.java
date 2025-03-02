@@ -16,10 +16,10 @@ public class RecipeController {
 
     private final RecipeService recipeService;
     ///NIE WIEM CZY NIE WYCIAGNAC TEGO DO OSOBNEGO KONTROLERA
-    private final RecipeReviewService recipeReviewService;
+    //private final RecipeReviewService recipeReviewService;
 
-    public RecipeController(RecipeService recipeService,RecipeReviewService recipeReviewService) {
-        this.recipeReviewService= recipeReviewService;
+    public RecipeController(RecipeService recipeService ){//,RecipeReviewService recipeReviewService) {
+       // this.recipeReviewService= recipeReviewService;
         this.recipeService= recipeService;
     }
 
@@ -36,10 +36,10 @@ public class RecipeController {
     public RecipeDTO editRecipe(@RequestParam RecipeDTO recipeDTO){
         return this.recipeService.editRecipe(recipeDTO);
     }
-    @PostMapping("/RateRecipe")
-    public Boolean rateRecipe(@RequestParam RecipeReviewDTO recipeReviewDTO){
-        return this.recipeReviewService.rateRecipe(recipeReviewDTO);
-    }
+//    @PostMapping("/RateRecipe")
+//    public Boolean rateRecipe(@RequestParam RecipeReviewDTO recipeReviewDTO){
+//        return this.recipeReviewService.rateRecipe(recipeReviewDTO);
+//    }
 
     @GetMapping("/RecipeFromFood")
     public List<RecipeDTO> getRecipesByFoodItems(@RequestParam Integer userId) {

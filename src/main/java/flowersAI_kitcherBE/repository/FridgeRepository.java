@@ -16,9 +16,8 @@ public interface FridgeRepository  extends JpaRepository<Fridge, Integer>{
     @Modifying
     @Query("UPDATE Fridge f SET f.name = :newName WHERE f.id = :fridgeId")
     void updateFridgeName(@Param("fridgeId") int fridgeId, @Param("newName") String newName);
-    @Modifying
-    //@Query("Select f From fridges f where user_id =: userId")
-    List<Fridge> getFridgesForUser(@Param("userId")long userId);
+    @Query("SELECT f FROM Fridge f WHERE f.user.id = :userId")
+    List<Fridge> getFridgesForUser(@Param("userId") long userId);
     ///TODO ZMIANA
    /* @Modifying
     @Query("Select fi From fridge_items fi where fridge_id =: fridgeId AND expiry_date BETWEEN GETDATE() and DATE_ADD(CURRENT_DATE, INTERVAL + 3 DAY))")

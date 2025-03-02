@@ -1,50 +1,55 @@
 package flowersAI_kitcherBE.entity;
-
-import flowersAI_kitcherBE.dto.UserDTO;
 import jakarta.persistence.*;
-
-import java.sql.Blob;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 
 @Entity
+@Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 255)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
+    private String name;
+
+    @Column(nullable = false, length = 255)
     private String password;
 
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
 
-    @Column(nullable = false)
-    private Blob photo;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
+    @Column(columnDefinition = "jsonb")
+    private String preferences;
 
-    public User(UserDTO userDTO) {
-        this.email=userDTO.getEmail();
-        this.name=userDTO.getName();
-        this.password= userDTO.getPassword();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Fridge> fridges;
 
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
@@ -55,6 +60,14 @@ public class User {
         this.email = email;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -63,12 +76,35 @@ public class User {
         this.password = password;
     }
 
-    public Blob getPhoto() {
-        return photo;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setPhoto(Blob photo) {
-        this.photo = photo;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(String preferences) {
+        this.preferences = preferences;
+    }
+
+    public List<Fridge> getFridges() {
+        return fridges;
+    }
+
+    public void setFridges(List<Fridge> fridges) {
+        this.fridges = fridges;
+    }
 }

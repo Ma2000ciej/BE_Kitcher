@@ -40,6 +40,7 @@ public class FridgeDao {
 
     }
     public List<Fridge> getUserFridges(User user){
+
         return this.fridgeRepository.getFridgesForUser(user.getId());
     }
 

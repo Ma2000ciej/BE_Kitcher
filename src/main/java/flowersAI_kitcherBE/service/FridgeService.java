@@ -44,7 +44,6 @@ public class FridgeService {
     public Boolean removeFridge(Integer fridgeId){
         return this.fridgeDao.removeFridge(fridgeId);
     }
-
     public Boolean addFoodItemToFridge(List<FoodItem> foodItem, Integer fridgeId){
         return this.fridgeDao.addManyFoodItemsToFridge(foodItem,fridgeId);
     }
