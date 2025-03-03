@@ -25,10 +25,10 @@ public class RecipeDTO {
 
     public  RecipeDTO (Recipe recipe){
         this.id=recipe.getId();
-        this.ingredientList = recipe.getIngredients();
+        //this.ingredientList = recipe.getIngredients();
         this.name = recipe.getName();
         this.description= recipe.getDescription();
-        this.authorId=recipe.getCreated_by();
+        //this.authorId=recipe.getCreated_by();
     }
 
     public long getId() {

@@ -23,7 +23,8 @@ public class UserDao {
 
     public  User createUser(User user){
         userRepository.save(user);
-        throw new UnsupportedOperationException("Feature incomplete. Contact assistance.");
+        return user;
+        //throw new UnsupportedOperationException("Feature incomplete. Contact assistance.");
         //return Boolean.TRUE;
     }
 

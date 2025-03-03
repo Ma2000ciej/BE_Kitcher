@@ -1,5 +1,12 @@
 package flowersAI_kitcherBE.entity;
+import flowersAI_kitcherBE.dto.UserDTO;
+import flowersAI_kitcherBE.entity.Fridge;
+import  flowersAI_kitcherBE.entity.Preferences;
+import flowersAI_kitcherBE.utils.JsonbConverter;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +33,22 @@ public class User {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    @Column(columnDefinition = "jsonb")
-    private String preferences;
+    @Column(name = "preferences", columnDefinition = "jsonb")
+    @Convert(converter = JsonbConverter.class)
+    private Preferences preferences;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Fridge> fridges;
+    public User(){
+
+    }
+    public User(UserDTO userDto) {
+        ///TODO
+        this.name=userDto.getName();
+        this.email=userDto.getEmail();
+        this.password=userDto.getPassword();
+        this.preferences=new Preferences();
+    }
 
     @PrePersist
     protected void onCreate() {
@@ -92,13 +109,6 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public String getPreferences() {
-        return preferences;
-    }
-
-    public void setPreferences(String preferences) {
-        this.preferences = preferences;
-    }
 
     public List<Fridge> getFridges() {
         return fridges;

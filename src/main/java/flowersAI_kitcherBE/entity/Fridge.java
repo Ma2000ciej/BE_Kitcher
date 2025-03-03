@@ -1,5 +1,4 @@
 package flowersAI_kitcherBE.entity;
-
 import flowersAI_kitcherBE.dto.FridgeDTO;
 import jakarta.persistence.*;
 

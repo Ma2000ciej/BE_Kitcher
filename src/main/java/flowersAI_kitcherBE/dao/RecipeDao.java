@@ -49,8 +49,8 @@ public class RecipeDao {
                 return recipe;
             }
             recipeToEdit.setDescription(recipe.getDescription());
-            recipeToEdit.setOrder(recipe.getOrder());
-            recipeToEdit.setIngredients(recipe.getIngredients());
+            //recipeToEdit.setOrder(recipe.getOrder());
+            //recipeToEdit.setIngredients(recipe.getIngredients());
             this.recipeRepository.save(recipeToEdit);
             return recipeToEdit;
         }catch (Exception e ){

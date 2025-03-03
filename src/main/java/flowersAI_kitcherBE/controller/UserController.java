@@ -19,7 +19,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/create")
+    @PostMapping ("/create")
     public ResponseEntity<User> createUser(@RequestBody UserDTO user) {
         User createdUser = userService.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);

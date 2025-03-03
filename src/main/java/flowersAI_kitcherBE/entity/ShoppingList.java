@@ -2,6 +2,7 @@ package flowersAI_kitcherBE.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "shopping_list")

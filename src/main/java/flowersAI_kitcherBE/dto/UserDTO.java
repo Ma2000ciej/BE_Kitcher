@@ -4,6 +4,8 @@ import flowersAI_kitcherBE.entity.User;
 
 public class UserDTO {
     private String name;
+    private String email;
+    private String password;
 
     public String getName() {
         return name;
@@ -29,8 +31,9 @@ public class UserDTO {
         this.password = password;
     }
 
-    private String email;
-    private String password;
+
+
+    public UserDTO() {}
     public UserDTO(User user){
         this.email=user.getEmail();
         this.name=user.getName();
